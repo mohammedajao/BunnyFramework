@@ -24,8 +24,8 @@ In simplest terms, one can say that the only things of ownership here is the Bun
 - Input System
 
 # Resources
-https://www.youtube.com/watch?v=tAbBID3N64A
-https://www.youtube.com/watch?v=Y7-OoXqNYgY
-https://www.youtube.com/watch?v=wj-2vbiyHnI
-https://medium.com/wluper/how-do-dialogue-systems-decide-what-to-say-or-which-actions-to-take-b32ca223aff1
+- https://www.youtube.com/watch?v=tAbBID3N64A
+- https://www.youtube.com/watch?v=Y7-OoXqNYgY
+- https://www.youtube.com/watch?v=wj-2vbiyHnI
+- https://medium.com/wluper/how-do-dialogue-systems-decide-what-to-say-or-which-actions-to-take-b32ca223aff1
 
