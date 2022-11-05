@@ -19,10 +19,11 @@ public enum BunnyRulePriority
 // Conversations that have several rules will use the same event.
 // They'll have criteria that requires the event entry to be their position in the dialogue sequence.
 
+[CreateAssetMenu(fileName = "BunnyRuleEntry", menuName = "Dialogue/Entries/BunnyRuleEntry")]
 public class BunnyRuleEntry : BunnyBaseEntry
 {
-    public BunnyDialogueCriteria[] criterion;
-    public BunnyEntryModification[] modifications;
+    public List<BunnyDialogueCriteria> criterion;
+    public List<BunnyEntryModification> modifications;
     public bool Once;
     public bool IsCancellable;
     public float Padding;
@@ -34,11 +35,11 @@ public class BunnyRuleEntry : BunnyBaseEntry
 
     public BunnyRuleEntry(
         string RuleKey,
-        BunnyDialogueCriteria[] criteria,
+        List<BunnyDialogueCriteria> criteria,
         BunnyEventEntry trigger,
         BunnyFactEntry speaker,
         string dialogue,
-        BunnyEntryModification[] mods
+        List<BunnyEntryModification> mods
     )
     {
         this.Key = RuleKey;
@@ -55,12 +56,12 @@ public class BunnyRuleEntry : BunnyBaseEntry
 
     public BunnyRuleEntry(
         string RuleKey,
-        BunnyDialogueCriteria[] criteria,
+        List<BunnyDialogueCriteria> criteria,
         BunnyEventEntry trigger,
         BunnyFactEntry speaker,
         string dialogue,
         BunnyEventEntry next,
-        BunnyEntryModification[] mods
+        List<BunnyEntryModification> mods
     )
     {
         this.Key = RuleKey;
@@ -79,7 +80,7 @@ public class BunnyRuleEntry : BunnyBaseEntry
 
     public bool Validate()
     {
-        for(var i=0; i < criterion.Length; i++)
+        for(var i=0; i < criterion.Count; i++)
         {
             if(!criterion[i].IsSatisfied()) 
                 return false;
@@ -90,13 +91,13 @@ public class BunnyRuleEntry : BunnyBaseEntry
     // Int passed will be event entry ID
     public void Execute(BunnyBrokerMessage<int> message)
     {
-        for(var i=0; i < criterion.Length; i++)
+        for(var i=0; i < criterion.Count; i++)
         {
             if(!criterion[i].IsSatisfied()) 
                 return;  
         }
         BunnySpeakerComponent speakerEnt = BunnyDialogueManager.Instance.Speakers.GetItemIndex(Speaker);
-        for(int i=0; i < modifications.Length; i++)
+        for(int i=0; i < modifications.Count; i++)
         {
             BunnyEntryModification mod = modifications[i];
             mod.Modify();
@@ -106,6 +107,6 @@ public class BunnyRuleEntry : BunnyBaseEntry
 
     public int GetPriority()
     {
-        return criterion.Length;
+        return criterion.Count;
     }
 }

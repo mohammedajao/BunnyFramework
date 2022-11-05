@@ -9,9 +9,9 @@ public class CommonTableSO: BunnyDialogueDatabaseCollection
     public CommonTableSO() : base("common")
     {
         // Facts
-        AddFactEntry(new BunnyFactEntry(0, "enemies_killed", BunnyFactEntryScope.GLOBAL));
-        AddFactEntry(new BunnyFactEntry(0, "player_deaths", BunnyFactEntryScope.GLOBAL));
-        AddFactEntry(new BunnyFactEntry(0, "current_speakers", BunnyFactEntryScope.TEMPORARY));
+        // AddFactEntry(new BunnyFactEntry(0, "enemies_killed", BunnyFactEntryScope.GLOBAL));
+        // AddFactEntry(new BunnyFactEntry(0, "player_deaths", BunnyFactEntryScope.GLOBAL));
+        // AddFactEntry(new BunnyFactEntry(0, "current_speakers", BunnyFactEntryScope.TEMPORARY));
     }
 
     private void OnEnable()

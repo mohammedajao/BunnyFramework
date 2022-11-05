@@ -22,12 +22,12 @@ public class BunnySortedRuleList : IEnumerable<BunnyRuleEntry>
     public void Add(BunnyRuleEntry entry)
     {
         entries.Add(entry);
-        entries.Sort((a,b) => a.criterion.Length - b.criterion.Length);
+        entries.Sort((x, y) => y.criterion.Count.CompareTo(x.criterion.Count));
     }
 
     public void Remove(BunnyRuleEntry entry)
     {
         entries.Remove(entry);
-        entries.Sort((a,b) => a.criterion.Length - b.criterion.Length);
+        entries.Sort((x, y) => y.criterion.Count.CompareTo(x.criterion.Count));
     }
 }
