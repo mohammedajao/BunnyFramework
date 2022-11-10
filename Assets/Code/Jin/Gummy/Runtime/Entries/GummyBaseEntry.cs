@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Jin.Gummy.Attributes;
+using Jin.Gummy.References;
+using Jin.Gummy.Shared;
 
 namespace Jin.Gummy.Entries
 {
@@ -16,5 +18,8 @@ namespace Jin.Gummy.Entries
         public GummyEntryReference scope;
 
         public bool once;
+
+        public abstract void AddToTable(GummyCollection db);
+        public abstract void RemoveFromTable(GummyCollection db);
     }
 }

@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Jin.Gummy.Blackboard;
 
 namespace Jin.Gummy.Shared
 {
-    private delegate void EventBusAction(int id);
+    public delegate void EventBusAction(int id, IGummyBlackboard context);
 
-    [CreateAssetMenu(filename = "GummyEventBus", menuName="GummyEvents/Bus")]
+    [CreateAssetMenu(fileName = "GummyEventBus", menuName="GummyEvents/Bus")]
     public class GummyEventBus : ScriptableObject
     {
         private readonly Dictionary<int, EventBusAction> _events = new();
@@ -33,12 +34,12 @@ namespace Jin.Gummy.Shared
            }
         }
 
-        public void RemoveListener(int id, EventBusAction aciton)
+        public void RemoveListener(int id, EventBusAction action)
         {
            if (_events.ContainsKey(id)) 
            {
                 var listeners = _events[id] - action;
-                if (listners == null)
+                if (listeners == null)
                 {
                     _events.Remove(id);
                 } else {
@@ -47,14 +48,14 @@ namespace Jin.Gummy.Shared
            } 
         }
 
-        public void Invoke(int id)
+        public void Invoke(int id, GummyBlackboard context)
         {
             if (id == 0)
                 return;
-            GlobalEvent?.Invoke(id);
+            GlobalEvent?.Invoke(id, context);
             if (_events.TryGetValue(id, out var callbacks))
             {
-                callbacks.Invoke(id);
+                callbacks.Invoke(id, context);
             }
         }
     }

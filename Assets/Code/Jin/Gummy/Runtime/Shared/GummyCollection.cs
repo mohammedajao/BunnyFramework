@@ -11,7 +11,9 @@ namespace Jin.Gummy.Shared
     {
         public string collectionName;
         // Later we'll have separate lists for facts, rules, & events
-        [SerializeReference] public List<GummyBaseEntry> entries;
+        [SerializeReference] public List<GummyFactEntry> facts;
+        [SerializeReference] public List<GummyEventEntry> events;
+        [SerializeReference] public List<GummyRuleEntry> rules;
 
         public virtual void RemoveEntry(GummyBaseEntry entry)
         {

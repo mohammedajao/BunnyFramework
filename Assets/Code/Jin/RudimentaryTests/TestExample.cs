@@ -1,18 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Jin.Gummy.Entries;
 
-public class TestExample : MonoBehaviour
+[CreateAssetMenu(fileName = "TestExample", menuName = "List Example")]
+public class TestExample : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public List<GummyBaseEntry> entries;
 }
