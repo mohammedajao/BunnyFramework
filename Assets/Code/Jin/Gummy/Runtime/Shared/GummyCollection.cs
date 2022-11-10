@@ -18,16 +18,17 @@ namespace Jin.Gummy.Shared
         public virtual void RemoveEntry(GummyBaseEntry entry)
         {
             // here we want the entry to remove from a table
+            entry.RemoveFromTable(this);
         }
 
         public virtual void AddEntry(GummyBaseEntry entry)
         {
             // here we want the entry to add itself to a table
+            entry.AddToTable(this);
         }
 
-        public virtual void Initialize()
+        public virtual void Initialize(GummyDatabase database)
         {
-            
         }
     }
 }

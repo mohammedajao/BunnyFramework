@@ -45,6 +45,19 @@ namespace Jin.Gummy.Tools
         internal struct Dispatcher
         {
             // [EntryFilter(Type = EntryType.Event)]
+            // Some references for help: https://gist.github.com/keless/8727613
+            // https://www.google.com/search?q=c%23+event.dispatcher&rlz=1C1VDKB_enUS929US929&oq=c%23+event.dispatcher&aqs=chrome..69i57j0i22i30l6j69i58.5611j0j4&sourceid=chrome&ie=UTF-8
+            // https://ootii.com/knowledge-base/event-dispatcher/
+
+            public void Subscribe()
+            {
+                // Add Listener
+            }
+
+            public void Dispatch()
+            {
+                // Send message
+            }
         }
     }
 }
