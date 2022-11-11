@@ -9,9 +9,9 @@ public class SpeakersTableSO : BunnyDialogueDatabaseCollection
     public SpeakersTableSO() : base("speakers")
     {
         // Facts
-        AddFactEntry(new BunnyFactEntry(0, "player", BunnyFactEntryScope.TEMPORARY));
-        AddFactEntry(new BunnyFactEntry(0, "player_0", BunnyFactEntryScope.TEMPORARY));
-        AddFactEntry(new BunnyFactEntry(0, "Guide-kun", BunnyFactEntryScope.TEMPORARY));
+        // AddFactEntry(new BunnyFactEntry(0, "player", BunnyFactEntryScope.TEMPORARY));
+        // AddFactEntry(new BunnyFactEntry(0, "player_0", BunnyFactEntryScope.TEMPORARY));
+        // AddFactEntry(new BunnyFactEntry(0, "Guide-kun", BunnyFactEntryScope.TEMPORARY));
     }
 
     private void OnEnable()

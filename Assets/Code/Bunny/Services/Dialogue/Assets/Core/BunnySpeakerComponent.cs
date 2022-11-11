@@ -7,6 +7,7 @@ public class BunnySpeakerComponent : MonoBehaviour
     public DialogueSpeakerMap Map;
     public BunnyFactEntry speaker;
     public string speakerKey;
+    public bool SoftDisable = false;
     //public BunnyFactEntry or maybe a descendant of it that's the SO
 
     private void Awake()
@@ -21,13 +22,16 @@ public class BunnySpeakerComponent : MonoBehaviour
         // Later, I'll make it so you can edit in the fact itself that's available.
         Map = BunnyDialogueManager.Instance.Speakers;
         string objectName = gameObject.name;
-        speaker = BunnyDialogueManager.Instance.GetFact("speakers", speakerKey);
-        Map.Add(speaker, this);
+        if(SoftDisable) {
+            speaker = BunnyDialogueManager.Instance.GetFact("speakers", speakerKey);
+            Map.Add(speaker, this);
+        }
     }
 
     private void OnDisable()
     {
-        Map.Remove(speaker);
+        if(speaker != null)
+            Map.Remove(speaker);
     }
     // Start is called before the first frame update
     void Start()

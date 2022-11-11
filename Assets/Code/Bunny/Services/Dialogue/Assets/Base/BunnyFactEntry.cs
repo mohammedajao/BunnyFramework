@@ -14,8 +14,11 @@ public enum BunnyFactEntryScope
     SCENE,
     TEMPORARY
 }
+
+[CreateAssetMenu(fileName = "BunnyFactEntry", menuName = "Dialogue/Entries/BunnyFactEntry", order = 0)]
 public class BunnyFactEntry : BunnyBaseEntry
 {
+    [SerializeField]
     private BunnyFactEntryScope scope;
 
     [SerializeField]

@@ -20,13 +20,20 @@ public abstract class IBunnyBrokerEventHandler {
 
 }
 
-[System.Serializable]
-public class BunnyEvent : IBunnyEvent
+[CreateAssetMenu(menuName = "Bunny/Core/BunnyEvent")]
+public class BunnyEvent : ScriptableObject, IBunnyEvent
 {
     [SerializeField] private string eventName;
     public String EventName => eventName;
     public object Sender;
     private Dictionary<Type, List<Delegate>> _subscribers;
+
+    public BunnyEvent()
+    {
+        eventName = "";
+        Sender = this;
+        _subscribers = new Dictionary<Type, List<Delegate>>();
+    }
 
     public BunnyEvent(string name, object source)
     {
@@ -67,7 +74,9 @@ public class BunnyEvent : IBunnyEvent
     {
         if(!_subscribers.ContainsKey(typeof(T)))
             return;
-        var delegates = _subscribers[typeof(T)];
+        List<Delegate> delegates = _subscribers[typeof(T)];
+        if(delegates == null)
+            return;
         if (delegates.Contains(subscription))
             delegates.Remove(subscription);
         if (delegates.Count == 0)

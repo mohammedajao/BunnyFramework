@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public enum BunnyEntryType 
 {
@@ -9,11 +10,10 @@ public enum BunnyEntryType
     RULE
 }
 
-public class BunnyBaseEntry {
-    [SerializeField]
-    public int ID { get; set; }
-    [SerializeField]
-    public string Key { get; set; }
+[CreateAssetMenu(fileName = "BunnyBaseEntry", menuName = "Dialogue/Entries/BunnyBaseEntry", order = 0)]
+public class BunnyBaseEntry : ScriptableObject {
+    public int ID;
+    public string Key = "";
 
     public override bool Equals(object obj)
     {  
@@ -33,5 +33,9 @@ public class BunnyBaseEntry {
     }
 
     // override object.GetHashCode
-    public override int GetHashCode() => (Key).GetHashCode();
+    public override int GetHashCode() {
+        if(Key == null)
+            throw new NullReferenceException("Entry's key is null.");
+        return (Key).GetHashCode();
+    }
 }

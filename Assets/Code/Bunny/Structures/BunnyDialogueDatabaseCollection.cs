@@ -3,16 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BunnyDialogueDatabaseCollection : ScriptableObject
+[CreateAssetMenu(menuName = "BDS/Data/FactCollection")]
+public class BunnyDialogueDatabaseCollection : ScriptableObject
 {
     [SerializeField]
     public string Name;
-    [SerializeField]
+
     public Dictionary<string, BunnyEventEntry> Events;
-    [SerializeField]
     public Dictionary<string, BunnyFactEntry> Facts;
-    [SerializeField]
     public Dictionary<string, BunnyRuleEntry> Rules;
+
+    [SerializeField]
+    public List<BunnyEventEntry> BunnyEvents;
+    [SerializeField]
+    public List<BunnyFactEntry> BunnyFacts;
+    [SerializeField]
+    public List<BunnyRuleEntry> BunnyRules;
 
     public BunnyDialogueDatabaseCollection(string name)
     {
@@ -20,6 +26,10 @@ public abstract class BunnyDialogueDatabaseCollection : ScriptableObject
         Events = new Dictionary<string, BunnyEventEntry>();
         Facts = new Dictionary<string, BunnyFactEntry>();
         Rules = new Dictionary<string, BunnyRuleEntry>();
+
+        BunnyEvents = new List<BunnyEventEntry>();
+        BunnyFacts = new List<BunnyFactEntry>();
+        BunnyRules = new List<BunnyRuleEntry>();
     }
 
     public virtual void Initialize() {}
@@ -80,6 +90,7 @@ public abstract class BunnyDialogueDatabaseCollection : ScriptableObject
             return;
         }
         Events.Add(entry.Key, entry);
+        BunnyEvents.Add(entry);
     }
 
     public void AddFactEntry(BunnyFactEntry entry)
@@ -89,6 +100,7 @@ public abstract class BunnyDialogueDatabaseCollection : ScriptableObject
             return;
         }
         Facts.Add(entry.Key, entry);
+        BunnyFacts.Add(entry);
     }
 
     public void AddRuleEntry(BunnyRuleEntry entry)
@@ -98,12 +110,16 @@ public abstract class BunnyDialogueDatabaseCollection : ScriptableObject
             return;
         }
         Rules.Add(entry.Key, entry);
+        BunnyRules.Add(entry);
     }
 
     public void RemoveFact(string FactKey)
     {
         if(Facts.ContainsKey(FactKey))
         {
+            BunnyFactEntry entry = Facts[FactKey];
+            BunnyFacts.Remove(entry);
+
             Facts.Remove(FactKey);
         }
     }
@@ -112,6 +128,9 @@ public abstract class BunnyDialogueDatabaseCollection : ScriptableObject
     {
         if(Rules.ContainsKey(RuleKey))
         {
+            BunnyRuleEntry entry = Rules[RuleKey];
+            BunnyRules.Remove(entry);
+
             Rules.Remove(RuleKey);
         }
     }
@@ -120,6 +139,9 @@ public abstract class BunnyDialogueDatabaseCollection : ScriptableObject
     {
         if(Events.ContainsKey(EventKey))
         {
+            BunnyEventEntry entry = Events[EventKey];
+            BunnyEvents.Remove(entry);
+
             Events.Remove(EventKey);
         }
     }

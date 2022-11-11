@@ -5,9 +5,10 @@ using UnityEngine;
 
 // ID represents the amount of times event was triggered
 
+[CreateAssetMenu(fileName = "BunnyEventEntry", menuName = "Dialogue/Entries/BunnyEventEntry")]
 public class BunnyEventEntry : BunnyBaseEntry
 {
-    public BunnyDialogueCriteria[] criterion;
+    public List<BunnyDialogueCriteria> criterion;
     [SerializeField] public bool Once;
     public BunnyEvent ClientEvent;
     public BunnySortedRuleList NextRules;
@@ -35,7 +36,7 @@ public class BunnyEventEntry : BunnyBaseEntry
 
     public BunnyEventEntry(
         string EventName,
-        BunnyDialogueCriteria[] policies,
+        List<BunnyDialogueCriteria> policies,
         BunnyEvent evt,
         bool once = false
     )
@@ -51,7 +52,7 @@ public class BunnyEventEntry : BunnyBaseEntry
 
     public bool IsSatisfied()
     {
-        for(int i = 0; i < criterion.Length; i++)
+        for(int i = 0; i < criterion.Count; i++)
         {
             BunnyDialogueCriteria policy = criterion[i];
             if(!policy.IsSatisfied()) {
@@ -109,6 +110,7 @@ public class BunnyEventEntry : BunnyBaseEntry
 
     public void OnDisable()
     {
-        ClientEvent.Disable();
+        if(ClientEvent != null)
+            ClientEvent.Disable();
     }
 }

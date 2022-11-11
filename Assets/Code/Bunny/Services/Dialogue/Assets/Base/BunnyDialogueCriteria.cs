@@ -15,7 +15,8 @@ public enum BunnyCriteriaComparator {
   GREATER_THAN_OR_EQUAL_TO
 };
 
-public class BunnyDialogueCriteria
+[CreateAssetMenu(fileName = "BunnyDialogueCriteria", menuName = "Dialogue/BunnyDialogueCriteria")]
+public class BunnyDialogueCriteria : ScriptableObject
 {
   [SerializeField]
   public string FactKey;
