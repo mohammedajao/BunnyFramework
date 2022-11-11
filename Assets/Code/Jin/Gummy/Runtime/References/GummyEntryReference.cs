@@ -54,9 +54,16 @@ namespace Jin.Gummy.References
             return reference.id;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static implicit operator GummyEntryReference(int identifier)
         {
             return new GummyEntryReference(identifier);
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static implicit operator GummyEntryReference(GummyBaseEntry entry)
+        {
+            return new GummyEntryReference(entry.id);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -73,9 +80,9 @@ namespace Jin.Gummy.References
 
         public GummyEntryReference(int identifier)
         {
-            if(identifier <= 0)
+            if(identifier == 0)
             {
-                throw new ArgumentOutOfRangeException(nameof(identifier), "ID cannot be less than 1.");
+                throw new ArgumentOutOfRangeException(nameof(identifier), "ID cannot be 0.");
             }
             id = identifier;
         }

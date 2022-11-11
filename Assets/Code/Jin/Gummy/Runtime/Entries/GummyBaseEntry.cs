@@ -11,7 +11,7 @@ namespace Jin.Gummy.Entries
     [Serializable]
     public abstract class GummyBaseEntry
     {
-        public int id;
+        public int id; // id is created in our custom editor on right-click. Unity's editor gui system allows this
         public string key;
 
         [GummyEntryFilter(Type = GummyEntryType.Fact, Base = typeof(GummyBaseEntry), AllowEmpty = true)]

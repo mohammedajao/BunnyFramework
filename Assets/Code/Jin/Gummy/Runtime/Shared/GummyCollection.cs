@@ -6,11 +6,11 @@ using Jin.Gummy.Entries;
 
 namespace Jin.Gummy.Shared
 {
+    // A GummyDatabase Table
     [Serializable]
     public class GummyCollection : ScriptableObject
     {
         public string collectionName;
-        // Later we'll have separate lists for facts, rules, & events
         [SerializeReference] public List<GummyFactEntry> facts;
         [SerializeReference] public List<GummyEventEntry> events;
         [SerializeReference] public List<GummyRuleEntry> rules;

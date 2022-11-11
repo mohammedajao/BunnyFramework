@@ -8,11 +8,11 @@ namespace Jin.Gummy.Blackboard
 {
     public enum GummyBlackboardCriterionOperator
     {
-
+        
     }
 
     public class GummyBlackboardCriterion
     {
-        public GummyBlackboardCriterionOperator op;
+        
     }
 }
