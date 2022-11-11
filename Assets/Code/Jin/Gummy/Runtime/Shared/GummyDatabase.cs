@@ -23,6 +23,7 @@ namespace Jin.Gummy.Shared
         bool TestEntry(GummyBaseEntry entry, IGummyBlackboard context);
         IGummyBlackboard GetBlackboard(int scope, IGummyBlackboard context);
         void CreateLookupIfNecessary();
+        Dictionary<GummyRuleEntry, IGummyBlackboard> GetRules(int entry);
     }
 
     public class GummyDatabase

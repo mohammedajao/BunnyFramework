@@ -53,5 +53,10 @@ namespace Jin.Gummy.Entries
             // Change later
             return 0;
         }
+
+        public void Execute()
+        {
+            
+        }
     }
 }
