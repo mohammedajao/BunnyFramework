@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Jin.Gummy.Attributes;
+using Jin.Gummy.Blackboard;
 using Jin.Gummy.References;
 using Jin.Gummy.Shared;
 
@@ -18,6 +19,14 @@ namespace Jin.Gummy.Entries
         public GummyEntryReference scope;
 
         public bool once;
+
+        [SerializeField]
+        internal GummyBlackboardCriterion[] criteria = Array.Empty<GummyBlackboardCriterion>();
+
+        [SerializeField]
+        internal GummyBlackboardModification[] modifications = Array.Empty<GummyBlackboardModification>();
+
+        // public abstract GummyEntryDescriptor GetDescriptor();
 
         public abstract void AddToTable(GummyCollection db);
         public abstract void RemoveFromTable(GummyCollection db);

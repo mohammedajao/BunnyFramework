@@ -6,6 +6,6 @@ namespace Jin.Gummy.Tools
 {
     public class GummyEventObserver 
     {
-       
+
     }
 }
