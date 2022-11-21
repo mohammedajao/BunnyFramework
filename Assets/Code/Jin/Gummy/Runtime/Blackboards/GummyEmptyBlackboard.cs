@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GummyEmptyBlackboard : MonoBehaviour
+namespace Jin.Gummy.Blackboard
 {
-    // Start is called before the first frame update
-    void Start()
+    public class GummyEmptyBlackboard : GummyBlackboard
     {
-        
-    }
+        private static GummyEmptyBlackboard _blackboard;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public static GummyEmptyBlackboard Instance 
+        {
+            get
+            {
+                if(_blackboard == null)
+                {
+                    _blackboard = new GummyEmptyBlackboard();
+                }
+                return _blackboard;
+            }
+        }
     }
 }

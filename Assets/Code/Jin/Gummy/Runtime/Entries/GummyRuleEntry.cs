@@ -10,6 +10,7 @@ using System;
 
 namespace Jin.Gummy.Entries
 {
+    [Serializable]
     public class GummyRuleEntry : GummyBaseEntry, IComparable<GummyRuleEntry>
     {
 
@@ -22,21 +23,17 @@ namespace Jin.Gummy.Entries
         [GummyEntryFilter(AllowEmpty = true)]
         public GummyEntryReference triggers;
 
+// IGNORE FOR NOW
         [SerializeField]
         internal GummyEvent.Dispatcher[] onStart = Array.Empty<GummyEvent.Dispatcher>();
 
         [SerializeField]
         internal GummyEvent.Dispatcher[] onEnd = Array.Empty<GummyEvent.Dispatcher>();
+// STOP IGNORING
 
         public int Weight => criteria.Length + padding;
 
         public float Delay => delay;
-
-        [SerializeField]
-        internal GummyBlackboardCriterion[] criteria = Array.Empty<GummyBlackboardCriterion>();
-
-        [SerializeField]
-        internal GummyBlackboardModification[] modifications = Array.Empty<GummyBlackboardModification>();
 
         public override void AddToTable(GummyCollection db)
         {
@@ -50,8 +47,12 @@ namespace Jin.Gummy.Entries
 
         public int CompareTo(GummyRuleEntry entry)
         {
-            // Change later
-            return 0;
+            return this.id == entry.id ? 1 : 0;
+        }
+
+        public void Execute()
+        {
+            
         }
     }
 }

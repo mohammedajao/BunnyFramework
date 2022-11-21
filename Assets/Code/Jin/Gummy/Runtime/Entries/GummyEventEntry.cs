@@ -8,6 +8,8 @@ namespace Jin.Gummy.Entries
 {
     public class GummyEventEntry : GummyBaseEntry
     {
+        public GummyEvent entryEvent;
+
         public override void AddToTable(GummyCollection db)
         {
             db.events.Add(this);
