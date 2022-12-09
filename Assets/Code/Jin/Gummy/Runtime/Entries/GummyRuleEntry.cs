@@ -23,13 +23,11 @@ namespace Jin.Gummy.Entries
         [GummyEntryFilter(AllowEmpty = true)]
         public GummyEntryReference triggers;
 
-// IGNORE FOR NOW
         [SerializeField]
         internal GummyEvent.Dispatcher[] onStart = Array.Empty<GummyEvent.Dispatcher>();
 
         [SerializeField]
         internal GummyEvent.Dispatcher[] onEnd = Array.Empty<GummyEvent.Dispatcher>();
-// STOP IGNORING
 
         public int Weight => criteria.Length + padding;
 
